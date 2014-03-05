@@ -1,0 +1,629 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7F3DED1218C58990009F2ED5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1118C58990009F2ED5 /* Foundation.framework */; };
+		7F3DED1418C58990009F2ED5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1318C58990009F2ED5 /* CoreGraphics.framework */; };
+		7F3DED1618C58990009F2ED5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1518C58990009F2ED5 /* UIKit.framework */; };
+		7F3DED1C18C58990009F2ED5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F3DED1A18C58990009F2ED5 /* InfoPlist.strings */; };
+		7F3DED1E18C58990009F2ED5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED1D18C58990009F2ED5 /* main.m */; };
+		7F3DED2218C58990009F2ED5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED2118C58990009F2ED5 /* AppDelegate.m */; };
+		7F3DED2518C58990009F2ED5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F3DED2318C58990009F2ED5 /* Main.storyboard */; };
+		7F3DED2818C58990009F2ED5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED2718C58990009F2ED5 /* ViewController.m */; };
+		7F3DED2A18C58990009F2ED5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F3DED2918C58990009F2ED5 /* Images.xcassets */; };
+		7F3DED3118C58990009F2ED5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED3018C58990009F2ED5 /* XCTest.framework */; };
+		7F3DED3218C58990009F2ED5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1118C58990009F2ED5 /* Foundation.framework */; };
+		7F3DED3318C58990009F2ED5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1518C58990009F2ED5 /* UIKit.framework */; };
+		7F3DED3B18C58990009F2ED5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F3DED3918C58990009F2ED5 /* InfoPlist.strings */; };
+		7F3DED3D18C58990009F2ED5 /* ProgletsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED3C18C58990009F2ED5 /* ProgletsTests.m */; };
+		7F3DED4818C58A67009F2ED5 /* TPOscilloscopeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED4718C58A67009F2ED5 /* TPOscilloscopeLayer.m */; };
+		7F3DED6018C58A88009F2ED5 /* AEExpanderFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED4C18C58A88009F2ED5 /* AEExpanderFilter.m */; };
+		7F3DED6118C58A88009F2ED5 /* AELimiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED4E18C58A88009F2ED5 /* AELimiter.m */; };
+		7F3DED6218C58A88009F2ED5 /* AELimiterFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED5018C58A88009F2ED5 /* AELimiterFilter.m */; };
+		7F3DED6318C58A88009F2ED5 /* AEMixerBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED5218C58A88009F2ED5 /* AEMixerBuffer.m */; };
+		7F3DED6418C58A88009F2ED5 /* AEPlaythroughChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED5418C58A88009F2ED5 /* AEPlaythroughChannel.m */; };
+		7F3DED6518C58A88009F2ED5 /* AERecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED5618C58A88009F2ED5 /* AERecorder.m */; };
+		7F3DED6618C58A88009F2ED5 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 7F3DED5818C58A88009F2ED5 /* README.markdown */; };
+		7F3DED6718C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED5918C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.c */; };
+		7F3DED6818C58A88009F2ED5 /* TPCircularBuffer.c in Sources */ = {isa = PBXBuildFile; fileRef = 7F3DED5B18C58A88009F2ED5 /* TPCircularBuffer.c */; };
+		7F3DED6F18C58AA2009F2ED5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED6E18C58AA2009F2ED5 /* Accelerate.framework */; };
+		7F3DED7118C58AA6009F2ED5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED7018C58AA6009F2ED5 /* AudioToolbox.framework */; };
+		7F3DED7318C58AAD009F2ED5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED7218C58AAD009F2ED5 /* CoreAudio.framework */; };
+		7F3DED7418C58ABE009F2ED5 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED6B18C58A88009F2ED5 /* libTheAmazingAudioEngine.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7F3DED3418C58990009F2ED5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F3DED0618C58990009F2ED5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F3DED0D18C58990009F2ED5;
+			remoteInfo = Proglets;
+		};
+		7F3DED6A18C58A88009F2ED5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F3DED5D18C58A88009F2ED5 /* TheAmazingAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4C215CEC1523A7D500D36CAD;
+			remoteInfo = TheAmazingAudioEngine;
+		};
+		7F3DED6C18C58A94009F2ED5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F3DED5D18C58A88009F2ED5 /* TheAmazingAudioEngine.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C215CEB1523A7D500D36CAD;
+			remoteInfo = TheAmazingAudioEngine;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7F3DED0E18C58990009F2ED5 /* Proglets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proglets.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F3DED1118C58990009F2ED5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7F3DED1318C58990009F2ED5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7F3DED1518C58990009F2ED5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7F3DED1918C58990009F2ED5 /* Proglets-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Proglets-Info.plist"; sourceTree = "<group>"; };
+		7F3DED1B18C58990009F2ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7F3DED1D18C58990009F2ED5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7F3DED1F18C58990009F2ED5 /* Proglets-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Proglets-Prefix.pch"; sourceTree = "<group>"; };
+		7F3DED2018C58990009F2ED5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7F3DED2118C58990009F2ED5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7F3DED2418C58990009F2ED5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7F3DED2618C58990009F2ED5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7F3DED2718C58990009F2ED5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7F3DED2918C58990009F2ED5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		7F3DED2F18C58990009F2ED5 /* ProgletsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgletsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F3DED3018C58990009F2ED5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		7F3DED3818C58990009F2ED5 /* ProgletsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ProgletsTests-Info.plist"; sourceTree = "<group>"; };
+		7F3DED3A18C58990009F2ED5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		7F3DED3C18C58990009F2ED5 /* ProgletsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgletsTests.m; sourceTree = "<group>"; };
+		7F3DED4618C58A67009F2ED5 /* TPOscilloscopeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPOscilloscopeLayer.h; sourceTree = "<group>"; };
+		7F3DED4718C58A67009F2ED5 /* TPOscilloscopeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPOscilloscopeLayer.m; sourceTree = "<group>"; };
+		7F3DED4B18C58A88009F2ED5 /* AEExpanderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEExpanderFilter.h; sourceTree = "<group>"; };
+		7F3DED4C18C58A88009F2ED5 /* AEExpanderFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEExpanderFilter.m; sourceTree = "<group>"; };
+		7F3DED4D18C58A88009F2ED5 /* AELimiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AELimiter.h; sourceTree = "<group>"; };
+		7F3DED4E18C58A88009F2ED5 /* AELimiter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELimiter.m; sourceTree = "<group>"; };
+		7F3DED4F18C58A88009F2ED5 /* AELimiterFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AELimiterFilter.h; sourceTree = "<group>"; };
+		7F3DED5018C58A88009F2ED5 /* AELimiterFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELimiterFilter.m; sourceTree = "<group>"; };
+		7F3DED5118C58A88009F2ED5 /* AEMixerBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEMixerBuffer.h; sourceTree = "<group>"; };
+		7F3DED5218C58A88009F2ED5 /* AEMixerBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEMixerBuffer.m; sourceTree = "<group>"; };
+		7F3DED5318C58A88009F2ED5 /* AEPlaythroughChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEPlaythroughChannel.h; sourceTree = "<group>"; };
+		7F3DED5418C58A88009F2ED5 /* AEPlaythroughChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEPlaythroughChannel.m; sourceTree = "<group>"; };
+		7F3DED5518C58A88009F2ED5 /* AERecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AERecorder.h; sourceTree = "<group>"; };
+		7F3DED5618C58A88009F2ED5 /* AERecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERecorder.m; sourceTree = "<group>"; };
+		7F3DED5818C58A88009F2ED5 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		7F3DED5918C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "TPCircularBuffer+AudioBufferList.c"; sourceTree = "<group>"; };
+		7F3DED5A18C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TPCircularBuffer+AudioBufferList.h"; sourceTree = "<group>"; };
+		7F3DED5B18C58A88009F2ED5 /* TPCircularBuffer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = TPCircularBuffer.c; sourceTree = "<group>"; };
+		7F3DED5C18C58A88009F2ED5 /* TPCircularBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPCircularBuffer.h; sourceTree = "<group>"; };
+		7F3DED5D18C58A88009F2ED5 /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		7F3DED6E18C58AA2009F2ED5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		7F3DED7018C58AA6009F2ED5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7F3DED7218C58AAD009F2ED5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7F3DED0B18C58990009F2ED5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F3DED7418C58ABE009F2ED5 /* libTheAmazingAudioEngine.a in Frameworks */,
+				7F3DED7318C58AAD009F2ED5 /* CoreAudio.framework in Frameworks */,
+				7F3DED7118C58AA6009F2ED5 /* AudioToolbox.framework in Frameworks */,
+				7F3DED6F18C58AA2009F2ED5 /* Accelerate.framework in Frameworks */,
+				7F3DED1418C58990009F2ED5 /* CoreGraphics.framework in Frameworks */,
+				7F3DED1618C58990009F2ED5 /* UIKit.framework in Frameworks */,
+				7F3DED1218C58990009F2ED5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F3DED2C18C58990009F2ED5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F3DED3118C58990009F2ED5 /* XCTest.framework in Frameworks */,
+				7F3DED3318C58990009F2ED5 /* UIKit.framework in Frameworks */,
+				7F3DED3218C58990009F2ED5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7F3DED0518C58990009F2ED5 = {
+			isa = PBXGroup;
+			children = (
+				7F3DED4918C58A6E009F2ED5 /* TheAmazingAudioEngine */,
+				7F3DED1718C58990009F2ED5 /* Proglets */,
+				7F3DED3618C58990009F2ED5 /* ProgletsTests */,
+				7F3DED1018C58990009F2ED5 /* Frameworks */,
+				7F3DED0F18C58990009F2ED5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7F3DED0F18C58990009F2ED5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED0E18C58990009F2ED5 /* Proglets.app */,
+				7F3DED2F18C58990009F2ED5 /* ProgletsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7F3DED1018C58990009F2ED5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED7218C58AAD009F2ED5 /* CoreAudio.framework */,
+				7F3DED7018C58AA6009F2ED5 /* AudioToolbox.framework */,
+				7F3DED6E18C58AA2009F2ED5 /* Accelerate.framework */,
+				7F3DED1118C58990009F2ED5 /* Foundation.framework */,
+				7F3DED1318C58990009F2ED5 /* CoreGraphics.framework */,
+				7F3DED1518C58990009F2ED5 /* UIKit.framework */,
+				7F3DED3018C58990009F2ED5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F3DED1718C58990009F2ED5 /* Proglets */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED4618C58A67009F2ED5 /* TPOscilloscopeLayer.h */,
+				7F3DED4718C58A67009F2ED5 /* TPOscilloscopeLayer.m */,
+				7F3DED2018C58990009F2ED5 /* AppDelegate.h */,
+				7F3DED2118C58990009F2ED5 /* AppDelegate.m */,
+				7F3DED2318C58990009F2ED5 /* Main.storyboard */,
+				7F3DED2618C58990009F2ED5 /* ViewController.h */,
+				7F3DED2718C58990009F2ED5 /* ViewController.m */,
+				7F3DED2918C58990009F2ED5 /* Images.xcassets */,
+				7F3DED1818C58990009F2ED5 /* Supporting Files */,
+			);
+			path = Proglets;
+			sourceTree = "<group>";
+		};
+		7F3DED1818C58990009F2ED5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED1918C58990009F2ED5 /* Proglets-Info.plist */,
+				7F3DED1A18C58990009F2ED5 /* InfoPlist.strings */,
+				7F3DED1D18C58990009F2ED5 /* main.m */,
+				7F3DED1F18C58990009F2ED5 /* Proglets-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7F3DED3618C58990009F2ED5 /* ProgletsTests */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED3C18C58990009F2ED5 /* ProgletsTests.m */,
+				7F3DED3718C58990009F2ED5 /* Supporting Files */,
+			);
+			path = ProgletsTests;
+			sourceTree = "<group>";
+		};
+		7F3DED3718C58990009F2ED5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED3818C58990009F2ED5 /* ProgletsTests-Info.plist */,
+				7F3DED3918C58990009F2ED5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7F3DED4918C58A6E009F2ED5 /* TheAmazingAudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED4A18C58A88009F2ED5 /* Modules */,
+				7F3DED5D18C58A88009F2ED5 /* TheAmazingAudioEngine.xcodeproj */,
+			);
+			name = TheAmazingAudioEngine;
+			sourceTree = "<group>";
+		};
+		7F3DED4A18C58A88009F2ED5 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED4B18C58A88009F2ED5 /* AEExpanderFilter.h */,
+				7F3DED4C18C58A88009F2ED5 /* AEExpanderFilter.m */,
+				7F3DED4D18C58A88009F2ED5 /* AELimiter.h */,
+				7F3DED4E18C58A88009F2ED5 /* AELimiter.m */,
+				7F3DED4F18C58A88009F2ED5 /* AELimiterFilter.h */,
+				7F3DED5018C58A88009F2ED5 /* AELimiterFilter.m */,
+				7F3DED5118C58A88009F2ED5 /* AEMixerBuffer.h */,
+				7F3DED5218C58A88009F2ED5 /* AEMixerBuffer.m */,
+				7F3DED5318C58A88009F2ED5 /* AEPlaythroughChannel.h */,
+				7F3DED5418C58A88009F2ED5 /* AEPlaythroughChannel.m */,
+				7F3DED5518C58A88009F2ED5 /* AERecorder.h */,
+				7F3DED5618C58A88009F2ED5 /* AERecorder.m */,
+				7F3DED5718C58A88009F2ED5 /* TPCircularBuffer */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7F3DED5718C58A88009F2ED5 /* TPCircularBuffer */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED5818C58A88009F2ED5 /* README.markdown */,
+				7F3DED5918C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.c */,
+				7F3DED5A18C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.h */,
+				7F3DED5B18C58A88009F2ED5 /* TPCircularBuffer.c */,
+				7F3DED5C18C58A88009F2ED5 /* TPCircularBuffer.h */,
+			);
+			path = TPCircularBuffer;
+			sourceTree = "<group>";
+		};
+		7F3DED5E18C58A88009F2ED5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7F3DED6B18C58A88009F2ED5 /* libTheAmazingAudioEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7F3DED0D18C58990009F2ED5 /* Proglets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F3DED4018C58990009F2ED5 /* Build configuration list for PBXNativeTarget "Proglets" */;
+			buildPhases = (
+				7F3DED0A18C58990009F2ED5 /* Sources */,
+				7F3DED0B18C58990009F2ED5 /* Frameworks */,
+				7F3DED0C18C58990009F2ED5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F3DED6D18C58A94009F2ED5 /* PBXTargetDependency */,
+			);
+			name = Proglets;
+			productName = Proglets;
+			productReference = 7F3DED0E18C58990009F2ED5 /* Proglets.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7F3DED2E18C58990009F2ED5 /* ProgletsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F3DED4318C58990009F2ED5 /* Build configuration list for PBXNativeTarget "ProgletsTests" */;
+			buildPhases = (
+				7F3DED2B18C58990009F2ED5 /* Sources */,
+				7F3DED2C18C58990009F2ED5 /* Frameworks */,
+				7F3DED2D18C58990009F2ED5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F3DED3518C58990009F2ED5 /* PBXTargetDependency */,
+			);
+			name = ProgletsTests;
+			productName = ProgletsTests;
+			productReference = 7F3DED2F18C58990009F2ED5 /* ProgletsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7F3DED0618C58990009F2ED5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = GTCMT;
+				TargetAttributes = {
+					7F3DED2E18C58990009F2ED5 = {
+						TestTargetID = 7F3DED0D18C58990009F2ED5;
+					};
+				};
+			};
+			buildConfigurationList = 7F3DED0918C58990009F2ED5 /* Build configuration list for PBXProject "Proglets" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7F3DED0518C58990009F2ED5;
+			productRefGroup = 7F3DED0F18C58990009F2ED5 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 7F3DED5E18C58A88009F2ED5 /* Products */;
+					ProjectRef = 7F3DED5D18C58A88009F2ED5 /* TheAmazingAudioEngine.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				7F3DED0D18C58990009F2ED5 /* Proglets */,
+				7F3DED2E18C58990009F2ED5 /* ProgletsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		7F3DED6B18C58A88009F2ED5 /* libTheAmazingAudioEngine.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTheAmazingAudioEngine.a;
+			remoteRef = 7F3DED6A18C58A88009F2ED5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7F3DED0C18C58990009F2ED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F3DED2A18C58990009F2ED5 /* Images.xcassets in Resources */,
+				7F3DED1C18C58990009F2ED5 /* InfoPlist.strings in Resources */,
+				7F3DED6618C58A88009F2ED5 /* README.markdown in Resources */,
+				7F3DED2518C58990009F2ED5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F3DED2D18C58990009F2ED5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F3DED3B18C58990009F2ED5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7F3DED0A18C58990009F2ED5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F3DED4818C58A67009F2ED5 /* TPOscilloscopeLayer.m in Sources */,
+				7F3DED2818C58990009F2ED5 /* ViewController.m in Sources */,
+				7F3DED6418C58A88009F2ED5 /* AEPlaythroughChannel.m in Sources */,
+				7F3DED6518C58A88009F2ED5 /* AERecorder.m in Sources */,
+				7F3DED6718C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.c in Sources */,
+				7F3DED6118C58A88009F2ED5 /* AELimiter.m in Sources */,
+				7F3DED6818C58A88009F2ED5 /* TPCircularBuffer.c in Sources */,
+				7F3DED6018C58A88009F2ED5 /* AEExpanderFilter.m in Sources */,
+				7F3DED2218C58990009F2ED5 /* AppDelegate.m in Sources */,
+				7F3DED6218C58A88009F2ED5 /* AELimiterFilter.m in Sources */,
+				7F3DED1E18C58990009F2ED5 /* main.m in Sources */,
+				7F3DED6318C58A88009F2ED5 /* AEMixerBuffer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F3DED2B18C58990009F2ED5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F3DED3D18C58990009F2ED5 /* ProgletsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7F3DED3518C58990009F2ED5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F3DED0D18C58990009F2ED5 /* Proglets */;
+			targetProxy = 7F3DED3418C58990009F2ED5 /* PBXContainerItemProxy */;
+		};
+		7F3DED6D18C58A94009F2ED5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TheAmazingAudioEngine;
+			targetProxy = 7F3DED6C18C58A94009F2ED5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7F3DED1A18C58990009F2ED5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F3DED1B18C58990009F2ED5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7F3DED2318C58990009F2ED5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F3DED2418C58990009F2ED5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7F3DED3918C58990009F2ED5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7F3DED3A18C58990009F2ED5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7F3DED3E18C58990009F2ED5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7F3DED3F18C58990009F2ED5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F3DED4118C58990009F2ED5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Proglets/Proglets-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					TheAmazingAudioEngine,
+				);
+				INFOPLIST_FILE = "Proglets/Proglets-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		7F3DED4218C58990009F2ED5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Proglets/Proglets-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					TheAmazingAudioEngine,
+				);
+				INFOPLIST_FILE = "Proglets/Proglets-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		7F3DED4418C58990009F2ED5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Proglets.app/Proglets";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Proglets/Proglets-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ProgletsTests/ProgletsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		7F3DED4518C58990009F2ED5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Proglets.app/Proglets";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Proglets/Proglets-Prefix.pch";
+				INFOPLIST_FILE = "ProgletsTests/ProgletsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7F3DED0918C58990009F2ED5 /* Build configuration list for PBXProject "Proglets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F3DED3E18C58990009F2ED5 /* Debug */,
+				7F3DED3F18C58990009F2ED5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F3DED4018C58990009F2ED5 /* Build configuration list for PBXNativeTarget "Proglets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F3DED4118C58990009F2ED5 /* Debug */,
+				7F3DED4218C58990009F2ED5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7F3DED4318C58990009F2ED5 /* Build configuration list for PBXNativeTarget "ProgletsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F3DED4418C58990009F2ED5 /* Debug */,
+				7F3DED4518C58990009F2ED5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7F3DED0618C58990009F2ED5 /* Project object */;
+}
