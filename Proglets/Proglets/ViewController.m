@@ -20,6 +20,7 @@
 @property (nonatomic, retain) AEAudioController *audioController;
 @property (nonatomic, retain) AEAudioUnitChannel *audioUnitPlayer;
 @property (nonatomic, retain) TPOscilloscopeLayer *inputOscilloscope;
+@property (nonatomic, retain) TPOscilloscopeLayer *outputOscilloscope;
 @property (nonatomic, retain) NSTimer *timer;
 @property (nonatomic, retain) AERecorder *recorder;
 @property (nonatomic, retain) UIButton *recordButton;
@@ -57,6 +58,14 @@
     [_audioController addInputReceiver:_inputOscilloscope];
     [_inputOscilloscope start];
     
+    self.outputOscilloscope = [[[TPOscilloscopeLayer alloc] initWithAudioController:_audioController] autorelease];
+    _outputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 380);
+    [headerView.layer addSublayer:_outputOscilloscope];
+    [_audioController addOutputReceiver:_outputOscilloscope];
+    [_outputOscilloscope start];
+    
+    self.tableView.tableHeaderView = headerView;
+    
     UIView *footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 80)] autorelease];
     self.recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
@@ -64,6 +73,7 @@
     [_recordButton addTarget:self action:@selector(record:) forControlEvents:UIControlEventTouchUpInside];
     _recordButton.frame = CGRectMake(20, 10, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
     _recordButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+    
     self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_playButton setTitle:@"Play" forState:UIControlStateNormal];
     [_playButton setTitle:@"Stop" forState:UIControlStateSelected];
@@ -72,8 +82,8 @@
     _playButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
     [footerView addSubview:_recordButton];
     [footerView addSubview:_playButton];
-    self.tableView.tableFooterView = footerView;
     
+    self.tableView.tableFooterView = footerView;
     
     m_loopCounter = -1;
     m_looping = false;
@@ -101,6 +111,7 @@
         if( m_loopCounter >= 4 )
         {
             m_loopCounter = -1;
+            [_audioController removeChannels:_loopArray];
         }
         
         // Increment the loop count

@@ -614,6 +614,7 @@
 				7F3DED4218C58990009F2ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F3DED4318C58990009F2ED5 /* Build configuration list for PBXNativeTarget "ProgletsTests" */ = {
 			isa = XCConfigurationList;
@@ -622,6 +623,7 @@
 				7F3DED4518C58990009F2ED5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
