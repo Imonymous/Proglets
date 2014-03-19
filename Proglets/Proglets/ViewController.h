@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+#import "TheAmazingAudioEngine.h"
+#import "TPOscilloscopeLayer.h"
+#import "AERecorder.h"
 
 @class AEAudioController;
 
@@ -16,6 +20,5 @@
     bool m_looping;
 }
 
-- (id) initWithAudioController:(AEAudioController*)audioController;
 
 @end

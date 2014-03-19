@@ -1,0 +1,12 @@
+
+/* Class = "IBUILabel"; text = "Password"; ObjectID = "HnT-Qq-mi7"; */
+"HnT-Qq-mi7.text" = "Password";
+
+/* Class = "IBUINavigationItem"; title = "Welcome!"; ObjectID = "Xdr-JY-yvb"; */
+"Xdr-JY-yvb.title" = "Welcome!";
+
+/* Class = "IBUILabel"; text = "Username"; ObjectID = "r8o-g1-z5K"; */
+"r8o-g1-z5K.text" = "Username";
+
+/* Class = "IBUIButton"; normalTitle = "Log In"; ObjectID = "v76-KK-gYL"; */
+"v76-KK-gYL.normalTitle" = "Log In";

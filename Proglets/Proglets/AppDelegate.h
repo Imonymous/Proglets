@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class ViewController;
-@class AEAudioController;
+@class LoginViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (retain, nonatomic) UIWindow *window;
-@property (retain, nonatomic) ViewController *viewController;
-@property (retain, nonatomic) AEAudioController *audioController;
+
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F2C44A018D97CD800B3901C /* ProgletView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F2C449F18D97CD800B3901C /* ProgletView.m */; };
 		7F3DED1218C58990009F2ED5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1118C58990009F2ED5 /* Foundation.framework */; };
 		7F3DED1418C58990009F2ED5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1318C58990009F2ED5 /* CoreGraphics.framework */; };
 		7F3DED1618C58990009F2ED5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED1518C58990009F2ED5 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 		7F3DED7118C58AA6009F2ED5 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED7018C58AA6009F2ED5 /* AudioToolbox.framework */; };
 		7F3DED7318C58AAD009F2ED5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED7218C58AAD009F2ED5 /* CoreAudio.framework */; };
 		7F3DED7418C58ABE009F2ED5 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED6B18C58A88009F2ED5 /* libTheAmazingAudioEngine.a */; };
+		7FEFBDA118D6512C00EEB061 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFBDA018D6512C00EEB061 /* TableViewController.m */; };
+		7FEFBDA618D6D3E200EEB061 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFBDA518D6D3E200EEB061 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F2C449E18D97CD800B3901C /* ProgletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgletView.h; sourceTree = "<group>"; };
+		7F2C449F18D97CD800B3901C /* ProgletView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgletView.m; sourceTree = "<group>"; };
 		7F3DED0E18C58990009F2ED5 /* Proglets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Proglets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F3DED1118C58990009F2ED5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7F3DED1318C58990009F2ED5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -104,6 +109,11 @@
 		7F3DED6E18C58AA2009F2ED5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		7F3DED7018C58AA6009F2ED5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		7F3DED7218C58AAD009F2ED5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		7FEFBD9F18D6512C00EEB061 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		7FEFBDA018D6512C00EEB061 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		7FEFBDA318D6B49700EEB061 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		7FEFBDA418D6D3E200EEB061 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		7FEFBDA518D6D3E200EEB061 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +190,12 @@
 				7F3DED2718C58990009F2ED5 /* ViewController.m */,
 				7F3DED2918C58990009F2ED5 /* Images.xcassets */,
 				7F3DED1818C58990009F2ED5 /* Supporting Files */,
+				7FEFBD9F18D6512C00EEB061 /* TableViewController.h */,
+				7FEFBDA018D6512C00EEB061 /* TableViewController.m */,
+				7FEFBDA418D6D3E200EEB061 /* LoginViewController.h */,
+				7FEFBDA518D6D3E200EEB061 /* LoginViewController.m */,
+				7F2C449E18D97CD800B3901C /* ProgletView.h */,
+				7F2C449F18D97CD800B3901C /* ProgletView.m */,
 			);
 			path = Proglets;
 			sourceTree = "<group>";
@@ -380,7 +396,10 @@
 				7F3DED4818C58A67009F2ED5 /* TPOscilloscopeLayer.m in Sources */,
 				7F3DED2818C58990009F2ED5 /* ViewController.m in Sources */,
 				7F3DED6418C58A88009F2ED5 /* AEPlaythroughChannel.m in Sources */,
+				7F2C44A018D97CD800B3901C /* ProgletView.m in Sources */,
 				7F3DED6518C58A88009F2ED5 /* AERecorder.m in Sources */,
+				7FEFBDA618D6D3E200EEB061 /* LoginViewController.m in Sources */,
+				7FEFBDA118D6512C00EEB061 /* TableViewController.m in Sources */,
 				7F3DED6718C58A88009F2ED5 /* TPCircularBuffer+AudioBufferList.c in Sources */,
 				7F3DED6118C58A88009F2ED5 /* AELimiter.m in Sources */,
 				7F3DED6818C58A88009F2ED5 /* TPCircularBuffer.c in Sources */,
@@ -428,6 +447,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				7F3DED2418C58990009F2ED5 /* Base */,
+				7FEFBDA318D6B49700EEB061 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

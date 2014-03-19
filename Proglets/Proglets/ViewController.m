@@ -7,10 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import "TheAmazingAudioEngine.h"
-#import "TPOscilloscopeLayer.h"
-#import "AERecorder.h"
+
 
 @interface ViewController () {
     AudioFileID _audioUnitFile;
@@ -31,59 +28,17 @@
 
 @implementation ViewController
 
-- (id) initWithAudioController:(AEAudioController*)audioController
-{
-    if ( !(self = [super initWithStyle:UITableViewStyleGrouped]) ) return nil;
-    
-    self.audioController = audioController;
-    
-    // Create a group for loop1, loop2 and oscillator
-    
-    _group = [_audioController createChannelGroup];
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 100)];
-    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    // Create an instance of the audio controller, set it up and start it running
+    self.audioController = [[[AEAudioController alloc] initWithAudioDescription:[AEAudioController nonInterleaved16BitStereoAudioDescription] inputEnabled:YES] autorelease];
+    _audioController.preferredBufferDuration = 0.005;
+    [_audioController start:NULL];
     
-    self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
-    _inputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 80);
-    [headerView.layer addSublayer:_inputOscilloscope];
-    [_audioController addInputReceiver:_inputOscilloscope];
-    [_inputOscilloscope start];
-    
-    self.outputOscilloscope = [[[TPOscilloscopeLayer alloc] initWithAudioController:_audioController] autorelease];
-    _outputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 380);
-    [headerView.layer addSublayer:_outputOscilloscope];
-    [_audioController addOutputReceiver:_outputOscilloscope];
-    [_outputOscilloscope start];
-    
-    self.tableView.tableHeaderView = headerView;
-    
-    UIView *footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 80)] autorelease];
-    self.recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
-    [_recordButton setTitle:@"Stop" forState:UIControlStateSelected];
-    [_recordButton addTarget:self action:@selector(record:) forControlEvents:UIControlEventTouchUpInside];
-    _recordButton.frame = CGRectMake(20, 10, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
-    _recordButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
-    
-    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_playButton setTitle:@"Play" forState:UIControlStateNormal];
-    [_playButton setTitle:@"Stop" forState:UIControlStateSelected];
-    [_playButton addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
-    _playButton.frame = CGRectMake(CGRectGetMaxX(_recordButton.frame)+10, 10, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
-    _playButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
-    [footerView addSubview:_recordButton];
-    [footerView addSubview:_playButton];
-    
-    self.tableView.tableFooterView = footerView;
+    _group = [_audioController createChannelGroup];
     
     m_loopCounter = -1;
     m_looping = false;
@@ -208,6 +163,105 @@
     }
 }
 
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    switch ( section ) {
+        case 0:
+            return 2;
+        default:
+            return 1;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath      *)indexPath;
+{
+    return 200;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if ( cell == nil ) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+    }
+    
+    // Configure the cell...
+    
+    cell.accessoryView = nil;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [[cell viewWithTag:251] removeFromSuperview];
+    
+    switch ( indexPath.section ) {
+        case 0: {
+            
+            switch ( indexPath.row ) {
+                case 0: {
+                    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 100)];
+                    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+                    
+                    self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
+                    _inputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 80);
+                    [headerView.layer addSublayer:_inputOscilloscope];
+                    [_audioController addInputReceiver:_inputOscilloscope];
+                    [_inputOscilloscope start];
+                    
+                    self.outputOscilloscope = [[[TPOscilloscopeLayer alloc] initWithAudioController:_audioController] autorelease];
+                    _outputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 280);
+                    [headerView.layer addSublayer:_outputOscilloscope];
+                    [_audioController addOutputReceiver:_outputOscilloscope];
+                    [_outputOscilloscope start];
+
+                    [cell addSubview:headerView];
+                    break;
+                }
+                case 1: {
+                    UIView *footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 80)] autorelease];
+                    self.recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
+                    [_recordButton setTitle:@"Stop" forState:UIControlStateSelected];
+                    [_recordButton addTarget:self action:@selector(record:) forControlEvents:UIControlEventTouchUpInside];
+                    _recordButton.frame = CGRectMake(20, 20, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
+                    _recordButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
+                    
+                    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                    [_playButton setTitle:@"Play" forState:UIControlStateNormal];
+                    [_playButton setTitle:@"Stop" forState:UIControlStateSelected];
+                    [_playButton addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
+                    _playButton.frame = CGRectMake(CGRectGetMaxX(_recordButton.frame)+10,20, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
+                    _playButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
+                    
+                    [footerView addSubview:_recordButton];
+                    [footerView addSubview:_playButton];
+                    
+                    [cell addSubview:footerView];
+                    break;
+                }
+                    
+            }
+            break;
+        }
+    }
+    
+    return cell;
+}
+
+-(void)dealloc {
+    self.audioController = nil;
+    [_loopArray release];
+    [super dealloc];
+}
 
 - (void)didReceiveMemoryWarning
 {
