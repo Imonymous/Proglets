@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
+    
         // Initialization code
 //        NSString *loopFile = [NSString stringWithFormat:@"0.aiff"];
 //        NSArray *documentsFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -25,7 +25,24 @@
 }
 
 - (void)dealloc {
+	[_wfv release];
 	[super dealloc];
+}
+
+-(IBAction) loadAudio:(id)sender {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp3"];
+    if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSURL *songURL = [NSURL fileURLWithPath:path];
+        [_wfv openAudioURL:songURL];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"No Audio !"
+                                                        message: @"You should add a sample.mp3 file to the project before test it."
+                                                       delegate: self
+                                              cancelButtonTitle: @"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
 }
 
 /*
@@ -34,6 +51,7 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    
 }
 */
 

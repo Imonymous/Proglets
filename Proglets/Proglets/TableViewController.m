@@ -51,45 +51,34 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    switch ( section ) {
-        case 0:
-            return 2;
-        default:
-            return 1;
-    }
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    ProgletView *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if ( cell == nil ) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+        cell = [[[ProgletView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
     }
+    
+//    cell.accessoryView = nil;
+//    [cell initWithFrame:CGRectZero];
     
     // Configure the cell...
     
-    cell.accessoryView = nil;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [[cell viewWithTag:251] removeFromSuperview];
-    
     switch ( indexPath.section ) {
         case 0: {
-            
+                        
             switch ( indexPath.row ) {
                 case 0: {
-                    cell.textLabel.text = @"Proglet1";
+                    
+                    
                     
                     break;
                 }
-                case 1: {
-                    cell.textLabel.text = @"Proglet2";
-                    
-                    break;
-                }
-
             }
             break;
         }
@@ -98,18 +87,23 @@
     return cell;
 }
 
-- (IBAction)pushMyNewViewController
+- (IBAction)pushMyViewController
 {
     ViewController *proglet = [[ViewController alloc] init];
     
-    // do any setup you need for myNewVC
+    // do any setup you need for Proglet
     
     [self presentViewController:proglet animated:YES completion:nil];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [self pushMyViewController];
+//}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath;
 {
-    [self pushMyNewViewController];
+    return 300;
 }
 
 /*

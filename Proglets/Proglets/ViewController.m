@@ -201,51 +201,50 @@
     
     cell.accessoryView = nil;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [[cell viewWithTag:251] removeFromSuperview];
     
     switch ( indexPath.section ) {
         case 0: {
             
             switch ( indexPath.row ) {
                 case 0: {
-                    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 100)];
-                    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+                    UIView *oscilView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 100)];
+                    oscilView.backgroundColor = [UIColor groupTableViewBackgroundColor];
                     
                     self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
-                    _inputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 80);
-                    [headerView.layer addSublayer:_inputOscilloscope];
+                    _inputOscilloscope.frame = CGRectMake(0, 0, oscilView.bounds.size.width, 80);
+                    [oscilView.layer addSublayer:_inputOscilloscope];
                     [_audioController addInputReceiver:_inputOscilloscope];
                     [_inputOscilloscope start];
                     
                     self.outputOscilloscope = [[[TPOscilloscopeLayer alloc] initWithAudioController:_audioController] autorelease];
-                    _outputOscilloscope.frame = CGRectMake(0, 0, headerView.bounds.size.width, 280);
-                    [headerView.layer addSublayer:_outputOscilloscope];
+                    _outputOscilloscope.frame = CGRectMake(0, 0, oscilView.bounds.size.width, 280);
+                    [oscilView.layer addSublayer:_outputOscilloscope];
                     [_audioController addOutputReceiver:_outputOscilloscope];
                     [_outputOscilloscope start];
 
-                    [cell addSubview:headerView];
+                    [cell addSubview:oscilView];
                     break;
                 }
                 case 1: {
-                    UIView *footerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 80)] autorelease];
+                    UIView *controlsView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 80)] autorelease];
                     self.recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                     [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
                     [_recordButton setTitle:@"Stop" forState:UIControlStateSelected];
                     [_recordButton addTarget:self action:@selector(record:) forControlEvents:UIControlEventTouchUpInside];
-                    _recordButton.frame = CGRectMake(20, 20, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
+                    _recordButton.frame = CGRectMake(20, 20, ((controlsView.bounds.size.width-50) / 2), controlsView.bounds.size.height - 20);
                     _recordButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
                     
                     self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
                     [_playButton setTitle:@"Play" forState:UIControlStateNormal];
                     [_playButton setTitle:@"Stop" forState:UIControlStateSelected];
                     [_playButton addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
-                    _playButton.frame = CGRectMake(CGRectGetMaxX(_recordButton.frame)+10,20, ((footerView.bounds.size.width-50) / 2), footerView.bounds.size.height - 20);
+                    _playButton.frame = CGRectMake(CGRectGetMaxX(_recordButton.frame)+10,20, ((controlsView.bounds.size.width-50) / 2), controlsView.bounds.size.height - 20);
                     _playButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
                     
-                    [footerView addSubview:_recordButton];
-                    [footerView addSubview:_playButton];
+                    [controlsView addSubview:_recordButton];
+                    [controlsView addSubview:_playButton];
                     
-                    [cell addSubview:footerView];
+                    [cell addSubview:controlsView];
                     break;
                 }
                     

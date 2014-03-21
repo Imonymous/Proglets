@@ -38,6 +38,9 @@
 		7F3DED7418C58ABE009F2ED5 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F3DED6B18C58A88009F2ED5 /* libTheAmazingAudioEngine.a */; };
 		7FEFBDA118D6512C00EEB061 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFBDA018D6512C00EEB061 /* TableViewController.m */; };
 		7FEFBDA618D6D3E200EEB061 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FEFBDA518D6D3E200EEB061 /* LoginViewController.m */; };
+		7FFF3FB318DAAB4000C8FDD3 /* WaveSampleProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFF3FB118DAAB4000C8FDD3 /* WaveSampleProvider.m */; };
+		7FFF3FB618DAABB800C8FDD3 /* WaveformHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FFF3FB518DAABB800C8FDD3 /* WaveformHelper.m */; };
+		7FFF3FB818DADDD900C8FDD3 /* sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7FFF3FB718DADDD900C8FDD3 /* sample.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +117,12 @@
 		7FEFBDA318D6B49700EEB061 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		7FEFBDA418D6D3E200EEB061 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		7FEFBDA518D6D3E200EEB061 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		7FFF3FB018DAAB4000C8FDD3 /* WaveSampleProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveSampleProvider.h; sourceTree = "<group>"; };
+		7FFF3FB118DAAB4000C8FDD3 /* WaveSampleProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveSampleProvider.m; sourceTree = "<group>"; };
+		7FFF3FB218DAAB4000C8FDD3 /* WaveSampleProviderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveSampleProviderDelegate.h; sourceTree = "<group>"; };
+		7FFF3FB418DAABB800C8FDD3 /* WaveformHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveformHelper.h; sourceTree = "<group>"; };
+		7FFF3FB518DAABB800C8FDD3 /* WaveformHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveformHelper.m; sourceTree = "<group>"; };
+		7FFF3FB718DADDD900C8FDD3 /* sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sample.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +190,9 @@
 		7F3DED1718C58990009F2ED5 /* Proglets */ = {
 			isa = PBXGroup;
 			children = (
+				7FFF3FB018DAAB4000C8FDD3 /* WaveSampleProvider.h */,
+				7FFF3FB118DAAB4000C8FDD3 /* WaveSampleProvider.m */,
+				7FFF3FB218DAAB4000C8FDD3 /* WaveSampleProviderDelegate.h */,
 				7F3DED4618C58A67009F2ED5 /* TPOscilloscopeLayer.h */,
 				7F3DED4718C58A67009F2ED5 /* TPOscilloscopeLayer.m */,
 				7F3DED2018C58990009F2ED5 /* AppDelegate.h */,
@@ -196,6 +208,8 @@
 				7FEFBDA518D6D3E200EEB061 /* LoginViewController.m */,
 				7F2C449E18D97CD800B3901C /* ProgletView.h */,
 				7F2C449F18D97CD800B3901C /* ProgletView.m */,
+				7FFF3FB418DAABB800C8FDD3 /* WaveformHelper.h */,
+				7FFF3FB518DAABB800C8FDD3 /* WaveformHelper.m */,
 			);
 			path = Proglets;
 			sourceTree = "<group>";
@@ -203,6 +217,7 @@
 		7F3DED1818C58990009F2ED5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7FFF3FB718DADDD900C8FDD3 /* sample.mp3 */,
 				7F3DED1918C58990009F2ED5 /* Proglets-Info.plist */,
 				7F3DED1A18C58990009F2ED5 /* InfoPlist.strings */,
 				7F3DED1D18C58990009F2ED5 /* main.m */,
@@ -375,6 +390,7 @@
 				7F3DED1C18C58990009F2ED5 /* InfoPlist.strings in Resources */,
 				7F3DED6618C58A88009F2ED5 /* README.markdown in Resources */,
 				7F3DED2518C58990009F2ED5 /* Main.storyboard in Resources */,
+				7FFF3FB818DADDD900C8FDD3 /* sample.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F3DED4818C58A67009F2ED5 /* TPOscilloscopeLayer.m in Sources */,
+				7FFF3FB618DAABB800C8FDD3 /* WaveformHelper.m in Sources */,
 				7F3DED2818C58990009F2ED5 /* ViewController.m in Sources */,
 				7F3DED6418C58A88009F2ED5 /* AEPlaythroughChannel.m in Sources */,
 				7F2C44A018D97CD800B3901C /* ProgletView.m in Sources */,
@@ -408,6 +425,7 @@
 				7F3DED6218C58A88009F2ED5 /* AELimiterFilter.m in Sources */,
 				7F3DED1E18C58990009F2ED5 /* main.m in Sources */,
 				7F3DED6318C58A88009F2ED5 /* AEMixerBuffer.m in Sources */,
+				7FFF3FB318DAAB4000C8FDD3 /* WaveSampleProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

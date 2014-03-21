@@ -12,6 +12,6 @@
 
 @interface TableViewController : UITableViewController
 
-@property (nonatomic, retain) NSMutableArray *progletsArray;
-@property (nonatomic, retain) ProgletView *pv;
+@property (nonatomic, retain) ProgletView *progletCellView;
+
 @end
