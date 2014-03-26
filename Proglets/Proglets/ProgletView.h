@@ -11,10 +11,11 @@
 
 @interface ProgletView : UITableViewCell
 
-@property (retain, nonatomic) IBOutlet WaveformHelper *wfv;
+@property (nonatomic, retain) IBOutlet WaveformHelper *wfv1;
+@property (nonatomic, retain) IBOutlet WaveformHelper *wfv2;
+@property (nonatomic, retain) IBOutlet WaveformHelper *wfv3;
+@property (nonatomic, retain) IBOutlet WaveformHelper *wfv4;
 
-@property (nonatomic, retain) IBOutlet UIButton *loadButton;
-
--(IBAction) loadAudio:(id)sender;
+- (void)loadFiles:(NSInteger)post;
 
 @end

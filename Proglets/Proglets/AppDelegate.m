@@ -23,6 +23,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSFileManager *filemgr;
+    NSArray *filelist;
+    int count;
+    
+    NSArray *documentsFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[documentsFolders objectAtIndex:0] stringByAppendingPathComponent:@""];
+    
+    filemgr =[NSFileManager defaultManager];
+    filelist = [filemgr contentsOfDirectoryAtPath:path error:NULL];
+    count = [filelist count];
+
+    self.totalPosts = count;
+    
     return YES;
 }
 

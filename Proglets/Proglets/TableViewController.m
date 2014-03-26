@@ -7,6 +7,7 @@
 //
 
 #import "TableViewController.h"
+#import "AppDelegate.h"
 
 @interface TableViewController ()
 
@@ -26,12 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,8 +51,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 1;
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    // Return the number of rows in the section. This is the number of posts we have.
+    return [appDelegate totalPosts];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,22 +67,13 @@
         cell = [[[ProgletView alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
     }
     
-//    cell.accessoryView = nil;
-//    [cell initWithFrame:CGRectZero];
-    
     // Configure the cell...
     
     switch ( indexPath.section ) {
         case 0: {
-                        
-            switch ( indexPath.row ) {
-                case 0: {
-                    
-                    
-                    
-                    break;
-                }
-            }
+
+            [cell loadFiles:(indexPath.row + 1)];
+            
             break;
         }
     }
@@ -87,23 +81,107 @@
     return cell;
 }
 
-- (IBAction)pushMyViewController
-{
-    ViewController *proglet = [[ViewController alloc] init];
-    
-    // do any setup you need for Proglet
-    
-    [self presentViewController:proglet animated:YES completion:nil];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationItem.hidesBackButton = NO;
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [self pushMyViewController];
-//}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationItem.hidesBackButton = NO;
+}
+
+- (IBAction)refresh:(id)sender
+{
+    [self.tableView reloadData];
+}
+
+- (IBAction)clearAll:(id)sender
+{
+    NSFileManager *filemgr;
+    NSArray *filelist;
+    int count;
+    
+    NSArray *documentsFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [[documentsFolders objectAtIndex:0] stringByAppendingPathComponent:@""];
+    
+    filemgr =[NSFileManager defaultManager];
+    filelist = [filemgr contentsOfDirectoryAtPath:path error:NULL];
+    count = [filelist count];
+    
+    // Whenever files need to be cleared
+    NSString *pathToFile;
+    NSError *error;
+    int i;
+
+    for (i = 0; i < count; i++)
+    {
+        NSLog(@"%@", filelist[i]);
+        pathToFile = [[documentsFolders objectAtIndex:0] stringByAppendingPathComponent:filelist[i]];
+        [[NSFileManager defaultManager] removeItemAtPath: pathToFile error: &error];
+        pathToFile = nil;
+    }
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    [appDelegate setTotalPosts:0];
+    
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath;
 {
-    return 300;
+    return 250;
+}
+
+- (IBAction)addNewPost:(id)sender
+{
+    // Create a New Folder for New Post
+    
+    NSFileManager *filemgr;
+    NSArray *dirPaths;
+    NSArray *filelist;
+    NSString *docsDir;
+    NSString *newDir;
+    
+    filemgr =[NSFileManager defaultManager];
+    
+    dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                   NSUserDomainMask, YES);
+    
+    docsDir = dirPaths[0];
+    
+    filelist = [filemgr contentsOfDirectoryAtPath:docsDir error:NULL];
+    int posts = [filelist count];
+    
+    NSString *folder = [NSString stringWithFormat:@"%d", posts+1];
+    
+    newDir = [docsDir stringByAppendingPathComponent:folder];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    if ([filemgr createDirectoryAtPath:newDir withIntermediateDirectories:YES
+                            attributes:nil error: NULL] == NO)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Dang !"
+                                                        message: @"Couldn't create folder !"
+                                                       delegate: self
+                                              cancelButtonTitle: @"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
+    else{
+        
+        [appDelegate setTotalPosts:posts+1];
+    }
+    
+    [appDelegate setCurrentPostOnEdit:posts+1];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate setCurrentPostOnEdit:(indexPath.row + 1)];
 }
 
 /*

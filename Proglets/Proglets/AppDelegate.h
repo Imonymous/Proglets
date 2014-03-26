@@ -13,4 +13,8 @@
 
 @property (retain, nonatomic) UIWindow *window;
 
+@property int totalPosts;
+
+@property int currentPostOnEdit;
+
 @end

@@ -16,32 +16,72 @@
     if (self) {
     
         // Initialization code
-//        NSString *loopFile = [NSString stringWithFormat:@"0.aiff"];
-//        NSArray *documentsFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString *path = [[documentsFolders objectAtIndex:0] stringByAppendingPathComponent:loopFile];
-    
+        
     }
     return self;
 }
 
 - (void)dealloc {
-	[_wfv release];
+	[_wfv1 release];
+    [_wfv2 release];
+    [_wfv3 release];
+    [_wfv4 release];
 	[super dealloc];
 }
 
--(IBAction) loadAudio:(id)sender {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"mp3"];
-    if([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSURL *songURL = [NSURL fileURLWithPath:path];
-        [_wfv openAudioURL:songURL];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"No Audio !"
-                                                        message: @"You should add a sample.mp3 file to the project before test it."
-                                                       delegate: self
-                                              cancelButtonTitle: @"OK"
-                                              otherButtonTitles: nil];
-        [alert show];
-        [alert release];
+- (void)loadFiles:(NSInteger)post {
+    
+    NSArray *documentsFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *postNumber = [NSString stringWithFormat:@"%d", post];
+    NSString *postPath = [[documentsFolders objectAtIndex:0] stringByAppendingPathComponent:postNumber];
+    
+    if(postPath)
+    {
+        NSFileManager *filemgr;
+        NSArray *filelist;
+        int count;
+        
+        filemgr =[NSFileManager defaultManager];
+        filelist = [filemgr contentsOfDirectoryAtPath:postPath error:NULL];
+        count = [filelist count];
+        
+        if(count > 0) {
+            
+            for (int i = 0; i < count; i++)
+            {
+                NSString *trackNumber = [NSString stringWithFormat:@"%d.aiff", i];
+                NSString *path = [postPath stringByAppendingPathComponent:trackNumber];
+                NSURL *songURL = [NSURL fileURLWithPath:path];
+                switch(i)
+                {
+                    case 0: {
+                        [_wfv1 openAudioURL:songURL];
+                        break;
+                    }
+                    case 1: {
+                        [_wfv2 openAudioURL:songURL];
+                        break;
+                    }
+                    case 2: {
+                        [_wfv3 openAudioURL:songURL];
+                        break;
+                    }
+                    case 3: {
+                        [_wfv4 openAudioURL:songURL];
+                        break;
+                    }
+                }
+            }
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"No Audio !"
+                                                            message: @"You should add something!"
+                                                           delegate: self
+                                                  cancelButtonTitle: @"OK"
+                                                  otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+        }
     }
 }
 

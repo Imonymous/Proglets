@@ -73,12 +73,17 @@
 // Rectangles
 - (CGRect) progressRect
 {
-	return CGRectMake(10, 90, 135, 50);
+	return CGRectMake(10, 90, 0, 50);
 }
 
 - (CGRect) waveRect
 {
-	return CGRectMake(10, 10, 135, 50);
+	return CGRectMake(30, 10, 225, 30);
+}
+
+- (CGRect) playButton
+{
+	return CGRectMake(5, 10, 20, 30);
 }
 
 - (void)drawRect:(CGRect)dirtyRect
@@ -89,13 +94,13 @@
 	CGContextSetFillColorWithColor(cx, [UIColor clearColor].CGColor);
 	CGContextFillRect(cx, self.bounds);
 	
-	[self drawRoundRect:self.bounds fillColor:gray strokeColor:green radius:8.0 lineWidht:2.0];
+	[self drawRoundRect:self.bounds fillColor:green strokeColor:green radius:8.0 lineWidht:2.0];
 
 	CGRect waveRect = [self waveRect];
-	[self drawRoundRect:waveRect fillColor:lightgray strokeColor:darkgray radius:4.0 lineWidht:2.0];
+	[self drawRoundRect:waveRect fillColor:lightgray strokeColor:lightgray radius:4.0 lineWidht:2.0];
 	
-	CGRect statusRect = [self statusRect];
-	[self drawRoundRect:statusRect fillColor:lightgray strokeColor:darkgray radius:4.0 lineWidht:2.0];
+	CGRect playButton = [self playButton];
+	[self drawRoundRect:playButton fillColor:lightgray strokeColor:darkgray radius:4.0 lineWidht:2.0];
 	
 	if(sampleLength > 0) {
         
@@ -148,11 +153,6 @@
 	[[UIColor clearColor] setFill];
 	CGContextRestoreGState(cx);
 	
-}
-
-- (CGRect) statusRect
-{
-	return CGRectMake(10, 100, 135, 50);
 }
 
 - (void) drawRoundRect:(CGRect)bounds fillColor:(UIColor *)fillColor strokeColor:(UIColor *)strokeColor radius:(CGFloat)radius lineWidht:(CGFloat)lineWidth
@@ -220,7 +220,7 @@
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
     AVPlayerItem *p = [notification object];
     [p seekToTime:kCMTimeZero]; //set to 00:00
-    [player pause];
+    [player play]; // Looping
 }
 
 - (void) releaseSample
@@ -284,7 +284,7 @@
 	CGRect wr = [self waveRect];
 	wr.size.width = (wr.size.width - 12);
 	wr.origin.x = wr.origin.x + 6;
-    if(CGRectContainsPoint([self waveRect],local_point)) {
+    if(CGRectContainsPoint([self playButton],local_point)) {
 		NSLog(@"Play/Pause touched");
 		[self pauseAudio];
     }
