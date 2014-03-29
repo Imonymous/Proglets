@@ -38,7 +38,7 @@
 	[self addSubview:progress];
 	[progress setHidden:TRUE];
     
-    green = [[UIColor colorWithRed:143.0/255.0 green:196.0/255.0 blue:72.0/255.0 alpha:1.0]retain];
+    oranje = [[UIColor colorWithRed:250.0/255.0 green:165/255.0 blue:27.0/255.0 alpha:1.0]retain];
 	gray = [[UIColor colorWithRed:64.0/255.0 green:63.0/255.0 blue:65.0/255.0 alpha:1.0]retain];
 	lightgray = [[UIColor colorWithRed:75.0/255.0 green:75.0/255.0 blue:75.0/255.0 alpha:1.0]retain];
 	darkgray = [[UIColor colorWithRed:47.0/255.0 green:47.0/255.0 blue:48.0/255.0 alpha:1.0]retain];
@@ -94,7 +94,7 @@
 	CGContextSetFillColorWithColor(cx, [UIColor clearColor].CGColor);
 	CGContextFillRect(cx, self.bounds);
 	
-	[self drawRoundRect:self.bounds fillColor:green strokeColor:green radius:8.0 lineWidht:2.0];
+	[self drawRoundRect:self.bounds fillColor:oranje strokeColor:oranje radius:8.0 lineWidht:2.0];
 
 	CGRect waveRect = [self waveRect];
 	[self drawRoundRect:waveRect fillColor:lightgray strokeColor:lightgray radius:4.0 lineWidht:2.0];
@@ -199,6 +199,31 @@
                                                      name:AVPlayerItemDidPlayToEndTimeNotification
                                                    object:[player currentItem]];
 	}
+}
+
+- (void) play
+{
+    if(wsp) {
+		if(player == nil) {
+			[self startAudio];
+			[player play];
+		} else {
+			if(player.rate == 0.0) {
+				[player play];
+            }
+        }
+    }
+}
+
+- (void) pause
+{
+    if(wsp) {
+		if(player != nil) {
+            if(player.rate != 0.0) {
+				[player pause];
+            }
+        }
+    }
 }
 
 - (void) pauseAudio
@@ -307,7 +332,7 @@
 	[self releaseSample];
 	[player pause];
 	[player release];
-	[green release];
+	[oranje release];
 	[gray release];
 	[lightgray release];
 	[darkgray release];

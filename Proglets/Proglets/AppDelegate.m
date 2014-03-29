@@ -36,6 +36,11 @@
 
     self.totalPosts = count;
     
+    [Parse setApplicationId:@"inoNYTwJjHycE7QQqhc31Cv9n0GBafnBRkt9uNbu"
+                  clientKey:@"7ttys0no0q3X23JIBoitnLR4iH69c6CKnxNePMPt"];
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     return YES;
 }
 

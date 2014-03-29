@@ -12,8 +12,6 @@
 
 @interface TableViewController : UITableViewController
 
-@property (nonatomic, retain) ProgletView* progletCellView;
-
 - (IBAction)addNewPost:(id)sender;
 - (IBAction)refresh:(id)sender;
 

@@ -22,10 +22,17 @@
 }
 
 - (void)dealloc {
+    
+    [_wfv1 pause];
+    [_wfv2 pause];
+    [_wfv3 pause];
+    [_wfv4 pause];
+    
 	[_wfv1 release];
     [_wfv2 release];
     [_wfv3 release];
     [_wfv4 release];
+    
 	[super dealloc];
 }
 
@@ -47,26 +54,26 @@
         
         if(count > 0) {
             
-            for (int i = 0; i < count; i++)
+            for (int i = 1; i <= count; i++)
             {
-                NSString *trackNumber = [NSString stringWithFormat:@"%d.aiff", i];
+                NSString *trackNumber = [NSString stringWithFormat:@"%d_%d.aiff", post, i];
                 NSString *path = [postPath stringByAppendingPathComponent:trackNumber];
                 NSURL *songURL = [NSURL fileURLWithPath:path];
                 switch(i)
                 {
-                    case 0: {
+                    case 1: {
                         [_wfv1 openAudioURL:songURL];
                         break;
                     }
-                    case 1: {
+                    case 2: {
                         [_wfv2 openAudioURL:songURL];
                         break;
                     }
-                    case 2: {
+                    case 3: {
                         [_wfv3 openAudioURL:songURL];
                         break;
                     }
-                    case 3: {
+                    case 4: {
                         [_wfv4 openAudioURL:songURL];
                         break;
                     }
@@ -83,6 +90,16 @@
             [alert release];
         }
     }
+}
+
+- (IBAction)playAll:(id)sender {
+    
+        [_wfv1 pauseAudio];
+        [_wfv2 pauseAudio];
+        [_wfv3 pauseAudio];
+        [_wfv4 pauseAudio];
+        
+        NSLog(@"Playing All");
 }
 
 /*

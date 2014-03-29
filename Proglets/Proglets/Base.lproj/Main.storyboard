@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="fqY-fJ-fUR">
-                            <rect key="frame" x="0.0" y="355" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="395" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="W0w-ws-wA1">
@@ -109,36 +109,49 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="260" id="hYB-Yq-7Bk" customClass="ProgletView">
-                                <rect key="frame" x="0.0" y="95" width="320" height="260"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" rowHeight="300" id="hYB-Yq-7Bk" customClass="ProgletView">
+                                <rect key="frame" x="0.0" y="95" width="320" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hYB-Yq-7Bk" id="P5R-G5-6NM">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="259"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="299"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" id="B4g-2Z-j6R" customClass="WaveformHelper">
-                                            <rect key="frame" x="8" y="15" width="270" height="56"/>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="B4g-2Z-j6R" customClass="WaveformHelper">
+                                            <rect key="frame" x="8" y="14" width="270" height="56"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" id="RMf-KE-Gjj" customClass="WaveformHelper">
-                                            <rect key="frame" x="8" y="74" width="270" height="56"/>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="RMf-KE-Gjj" customClass="WaveformHelper">
+                                            <rect key="frame" x="8" y="73" width="270" height="56"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" id="uwc-hQ-8RQ" customClass="WaveformHelper">
+                                        <view alpha="0.75" contentMode="scaleToFill" id="uwc-hQ-8RQ" customClass="WaveformHelper">
                                             <rect key="frame" x="8" y="132" width="270" height="56"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <view contentMode="scaleToFill" id="BaJ-8Z-ijN" customClass="WaveformHelper">
-                                            <rect key="frame" x="8" y="190" width="270" height="56"/>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="BaJ-8Z-ijN" customClass="WaveformHelper">
+                                            <rect key="frame" x="8" y="191" width="270" height="56"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="n2b-sr-nvu">
+                                            <rect key="frame" x="118" y="255" width="51" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <gestureRecognizers/>
+                                            <state key="normal" title="Play All">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="playAll:" destination="hYB-Yq-7Bk" eventType="touchUpInside" id="Aj2-pD-szn"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
+                                    <outlet property="playAll" destination="n2b-sr-nvu" id="ewC-T1-bln"/>
                                     <outlet property="wfv1" destination="B4g-2Z-j6R" id="WBs-yP-uau"/>
                                     <outlet property="wfv2" destination="RMf-KE-Gjj" id="tcK-wL-zes"/>
                                     <outlet property="wfv3" destination="uwc-hQ-8RQ" id="8xo-e7-aAy"/>
@@ -166,10 +179,48 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ipk-xY-Ymj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController title="View Proglet" id="PEU-sU-mdi" customClass="ViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Ok-Jb-Lrd">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="250" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Ok-Jb-Lrd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="progCell" rowHeight="250" id="4Y2-6Y-HZd" customClass="ProgletView">
+                                <rect key="frame" x="0.0" y="116" width="320" height="250"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Y2-6Y-HZd" id="XJH-YF-fJ9">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="250"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="OQD-PK-uCO" customClass="WaveformHelper">
+                                            <rect key="frame" x="20" y="6" width="267" height="55"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="xRg-1c-4dH" customClass="WaveformHelper">
+                                            <rect key="frame" x="20" y="64" width="267" height="55"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="G51-6q-Gyg" customClass="WaveformHelper">
+                                            <rect key="frame" x="20" y="122" width="267" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <view alpha="0.75" contentMode="scaleToFill" id="eBQ-fg-Sgy" customClass="WaveformHelper">
+                                            <rect key="frame" x="20" y="181" width="267" height="56"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="wfv1" destination="OQD-PK-uCO" id="SlJ-RO-ceT"/>
+                                    <outlet property="wfv2" destination="xRg-1c-4dH" id="BaR-pE-pZw"/>
+                                    <outlet property="wfv3" destination="G51-6q-Gyg" id="bLw-H0-n8R"/>
+                                    <outlet property="wfv4" destination="eBQ-fg-Sgy" id="Xsf-Wl-MkK"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                         <sections/>
                         <connections>
                             <outlet property="dataSource" destination="PEU-sU-mdi" id="VeV-qc-dV4"/>

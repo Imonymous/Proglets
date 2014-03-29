@@ -21,7 +21,7 @@
 	AVPlayer *player;
 	float playProgress;
     
-    UIColor *green;
+    UIColor *oranje;
 	UIColor *gray;
 	UIColor *lightgray;
 	UIColor *darkgray;
@@ -31,5 +31,8 @@
 
 - (void) openAudioURL:(NSURL *)url;
 - (void) playerItemDidReachEnd:(NSNotification *)notification;
+- (void) pauseAudio;
+- (void) play;
+- (void) pause;
 
 @end
