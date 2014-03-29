@@ -227,7 +227,17 @@
                             <outlet property="delegate" destination="PEU-sU-mdi" id="cww-2Z-LbQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Proglet" prompt="Details" id="iCh-vE-i6g"/>
+                    <navigationItem key="navigationItem" title="My Proglet" prompt="Details" id="iCh-vE-i6g">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="hyD-YO-QiV">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Y5m-H2-obY">
+                                <rect key="frame" x="255" y="36" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="reverbSwitchChanged:" destination="PEU-sU-mdi" eventType="valueChanged" id="X4B-i5-CKn"/>
+                                </connections>
+                            </switch>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="2809" y="-28"/>

@@ -395,48 +395,56 @@
 - (void) download : (id) sender
 {
     NSString* className = [NSString stringWithFormat:@"proglet_%d", m_thisPost];
-    PFObject *uploadObject = [PFObject objectWithClassName:className];
     
     NSString *postFullPath = [NSString stringWithFormat:@"%d/%d_%d.aiff", m_thisPost, m_thisPost, m_loopCounter];
     NSArray *documentsFolders = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *filePath = [[documentsFolders objectAtIndex:0] stringByAppendingPathComponent:postFullPath];
-    
     
     PFQuery *query = [PFQuery queryWithClassName:className];
     [query whereKeyExists:@"audioFile"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)
         {
-            PFObject *testObject = [objects lastObject];
-            PFFile *audioFile = testObject[@"audioFile"];
-            NSString *filePath = [audioFile url];
+            PFObject *downloadObject = [objects lastObject];
+            PFFile *audioFile = downloadObject[@"audioFile"];
+            NSString *playFilePath = [audioFile url];
             
             //play audiofile streaming
-            self.avplayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:filePath]];
+            self.avplayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:playFilePath]];
             self.avplayer.volume = 1.0f;
             [self.avplayer play];
             
-            
+            //download the file in a seperate thread.
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSLog(@"Downloading Started");
+                NSURL  *url = [NSURL URLWithString:playFilePath];
+                NSData *urlData = [NSData dataWithContentsOfURL:url];
+                if ( urlData )
+                {
+                    //saving is done on main thread
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [urlData writeToFile:filePath atomically:YES];
+                        [self.tableView reloadData];
+                        NSLog(@"File Saved !");
+                    });
+                }
+                
+            });
             
         } else {
             
             NSLog(@"error = %@", [error userInfo]);
         }
     }];
-    
-    NSData *audioData = [NSData dataWithContentsOfFile:filePath];
-    
-    NSString *postFile = [NSString stringWithFormat:@"%d_%d.aiff", m_thisPost, m_loopCounter];
-    
-    PFFile *audioFile = [PFFile fileWithName:postFile data:audioData];
-    
-    uploadObject[@"audioFile"] = audioFile;
-    
-    [uploadObject saveInBackground];
 }
 
-
 -(void)dealloc {
+    
+    if ( _reverb ) {
+        [_audioController removeFilter:_reverb];
+        self.reverb = nil;
+    }
+    
     self.audioController = nil;
     [_loopArray removeAllObjects];
     [_loopArray release];
@@ -444,7 +452,21 @@
     [_trackArray release];
     [_audioController release];
     [_audioUnitPlayer release];
+    [_avplayer release];
     [super dealloc];
+}
+
+- (IBAction)reverbSwitchChanged:(UISwitch*)sender {
+    if ( sender.isOn ) {
+        self.reverb = [[[AEAudioUnitFilter alloc] initWithComponentDescription:AEAudioComponentDescriptionMake(kAudioUnitManufacturer_Apple, kAudioUnitType_Effect, kAudioUnitSubType_Reverb2) audioController:_audioController error:NULL] autorelease];
+        
+        AudioUnitSetParameter(_reverb.audioUnit, kReverb2Param_DryWetMix, kAudioUnitScope_Global, 0, 100.f, 0);
+        
+        [_audioController addFilter:_reverb];
+    } else {
+        [_audioController removeFilter:_reverb];
+        self.reverb = nil;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

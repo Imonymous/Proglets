@@ -27,7 +27,7 @@
 }
 
 @property (nonatomic, retain) ProgletView* progletCellView;
-
+@property (nonatomic, retain) AEAudioUnitFilter *reverb;
 @property (nonatomic, retain) AEAudioController *audioController;
 @property (nonatomic, retain) AEAudioUnitChannel *audioUnitPlayer;
 @property (nonatomic, retain) TPOscilloscopeLayer *inputOscilloscope;
@@ -43,5 +43,8 @@
 @property (nonatomic, retain) UIBarButtonItem *backButton;
 @property (nonatomic, retain) NSMutableArray *loopArray;
 @property (nonatomic, retain) AVPlayer *avplayer;
+//@property (nonatomic, retain) UISwitch *reverbSwitch;
+
+- (IBAction)reverbSwitchChanged:(UISwitch*)sender;
 
 @end
