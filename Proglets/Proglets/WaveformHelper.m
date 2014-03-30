@@ -83,7 +83,7 @@
 
 - (CGRect) playButton
 {
-	return CGRectMake(5, 10, 20, 30);
+	return CGRectMake(5, 15, 20, 20);
 }
 
 - (void)drawRect:(CGRect)dirtyRect
@@ -100,7 +100,9 @@
 	[self drawRoundRect:waveRect fillColor:lightgray strokeColor:lightgray radius:4.0 lineWidht:2.0];
 	
 	CGRect playButton = [self playButton];
-	[self drawRoundRect:playButton fillColor:lightgray strokeColor:darkgray radius:4.0 lineWidht:2.0];
+    
+    UIImage *loopOnce = [UIImage imageNamed:@"LoopOnce.png"];
+    [loopOnce drawInRect:playButton];
 	
 	if(sampleLength > 0) {
         

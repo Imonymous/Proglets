@@ -43,7 +43,7 @@
 @property (nonatomic, retain) UIBarButtonItem *backButton;
 @property (nonatomic, retain) NSMutableArray *loopArray;
 @property (nonatomic, retain) AVPlayer *avplayer;
-//@property (nonatomic, retain) UISwitch *reverbSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch *reverbSwitch;
 
 - (IBAction)reverbSwitchChanged:(UISwitch*)sender;
 

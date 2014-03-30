@@ -90,7 +90,6 @@
         [_audioController removeChannels:_loopArray];
         _playButton.selected = NO;
         m_looping = false;
-        m_loopCounter = 1;
     }
     
     if ( _recorder ) {
@@ -102,13 +101,7 @@
         [self.tableView reloadData];
     } else {
         
-        if( m_loopCounter > MAX_CHANNELS )
-        {
-            m_loopCounter = 1;
-            [_audioController removeChannels:_loopArray];
-            [_loopArray removeAllObjects];
-        }
-                // Make a new Filename
+        // Make a new Filename
         NSString *loop = [NSString stringWithFormat:@"%d/%d_%d.aiff", m_thisPost, m_thisPost, m_loopCounter];
         
         self.recorder = [[[AERecorder alloc] initWithAudioController:_audioController] autorelease];
@@ -138,6 +131,14 @@
         
         // Increment the loop count
         m_loopCounter++;
+        
+        if( m_loopCounter > MAX_CHANNELS )
+        {
+            m_loopCounter = 1;
+            [_audioController removeChannels:_loopArray];
+            [_loopArray removeAllObjects];
+        }
+
     }
 }
 
@@ -232,10 +233,10 @@
         case 1: {
             switch ( indexPath.row ) {
                 case 0: {
-                    return 80;
+                    return 100;
                 }
                 case 1: {
-                    return 120;
+                    return 100;
                 }
             }
         }
@@ -278,17 +279,17 @@
             
             switch ( indexPath.row ) {
                 case 0: {
-                    UIView *oscilView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 80)];
+                    UIView *oscilView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.bounds.size.width, 100)];
                     oscilView.backgroundColor = [UIColor groupTableViewBackgroundColor];
                     
                     self.inputOscilloscope = [[TPOscilloscopeLayer alloc] initWithAudioController:_audioController];
-                    _inputOscilloscope.frame = CGRectMake(0, 0, oscilView.bounds.size.width, 40);
+                    _inputOscilloscope.frame = CGRectMake(0, 0, oscilView.bounds.size.width, 50);
                     [oscilView.layer addSublayer:_inputOscilloscope];
                     [_audioController addInputReceiver:_inputOscilloscope];
                     [_inputOscilloscope start];
                     
                     self.outputOscilloscope = [[[TPOscilloscopeLayer alloc] initWithAudioController:_audioController] autorelease];
-                    _outputOscilloscope.frame = CGRectMake(0, 40, oscilView.bounds.size.width, 40);
+                    _outputOscilloscope.frame = CGRectMake(0, 50, oscilView.bounds.size.width, 50);
                     [oscilView.layer addSublayer:_outputOscilloscope];
                     [_audioController addOutputReceiver:_outputOscilloscope];
                     [_outputOscilloscope start];
@@ -298,39 +299,37 @@
                 }
                 case 1: {
                     UIView *controlsView = [[[UIView alloc] initWithFrame:CGRectMake(0, 10, cell.bounds.size.width, 100)] autorelease];
-                    self.recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    [_recordButton setTitle:@"Record" forState:UIControlStateNormal];
-                    [_recordButton setTitle:@"Stop" forState:UIControlStateSelected];
+                    
+                    self.recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [_recordButton setBackgroundImage:[UIImage imageNamed:@"Record.png"] forState:UIControlStateNormal];
+                    [_recordButton setBackgroundImage:[UIImage imageNamed:@"Recording.png"] forState:UIControlStateSelected];
                     [_recordButton addTarget:self action:@selector(record:) forControlEvents:UIControlEventTouchUpInside];
-                    _recordButton.frame = CGRectMake(0, 0, ((controlsView.bounds.size.width) / 4), 20);
+                    _recordButton.frame = CGRectMake(10, 0, ((controlsView.bounds.size.width) / 4) - 30, 40);
                     _recordButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
                     
-                    self.uploadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    [_uploadButton setTitle:@"Upload" forState:UIControlStateNormal];
-                    [_uploadButton setTitle:@"Stop" forState:UIControlStateSelected];
+                    self.uploadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [_uploadButton setBackgroundImage:[UIImage imageNamed:@"Upload.png"] forState:UIControlStateNormal];
                     [_uploadButton addTarget:self action:@selector(upload:) forControlEvents:UIControlEventTouchUpInside];
-                    _uploadButton.frame = CGRectMake(0, 30, ((controlsView.bounds.size.width) / 4), 20);
+                    _uploadButton.frame = CGRectMake(5, 50, ((controlsView.bounds.size.width) / 4) - 20, 40);
                     _uploadButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleRightMargin;
 
-                    
-                    [_trackPicker setFrame:CGRectMake(CGRectGetMaxX(_recordButton.frame)+1, 0, ((controlsView.bounds.size.width-10) / 2), (controlsView.bounds.size.height - 1))];
+                    [_trackPicker setFrame:CGRectMake(CGRectGetMaxX(_recordButton.frame) + 20, 0, ((controlsView.bounds.size.width - 10) / 2), (controlsView.bounds.size.height - 10))];
                     
                     _trackPicker.showsSelectionIndicator = YES;
                     
                     [_trackPicker selectRow:0 inComponent:0 animated:YES];
 
-                    self.playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    [_playButton setTitle:@"Play" forState:UIControlStateNormal];
-                    [_playButton setTitle:@"Stop" forState:UIControlStateSelected];
+                    self.playButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [_playButton setBackgroundImage:[UIImage imageNamed:@"LoopAll.png"] forState:UIControlStateNormal];
+                    [_playButton setBackgroundImage:[UIImage imageNamed:@"Stop.png"] forState:UIControlStateSelected];
                     [_playButton addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
-                    _playButton.frame = CGRectMake(CGRectGetMaxX(_trackPicker.frame)+1, 0, ((controlsView.bounds.size.width-10) / 4), 20);
+                    _playButton.frame = CGRectMake(CGRectGetMaxX(_trackPicker.frame) + 20, 0, ((controlsView.bounds.size.width - 80) / 4), 40);
                     _playButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
                     
-                    self.downloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    [_downloadButton setTitle:@"Download" forState:UIControlStateNormal];
-                    [_downloadButton setTitle:@"Stop" forState:UIControlStateSelected];
+                    self.downloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+                    [_downloadButton setBackgroundImage:[UIImage imageNamed:@"Download.png"] forState:UIControlStateNormal];
                     [_downloadButton addTarget:self action:@selector(download:) forControlEvents:UIControlEventTouchUpInside];
-                    _downloadButton.frame = CGRectMake(CGRectGetMaxX(_trackPicker.frame)+1, 30, ((controlsView.bounds.size.width-10) / 4), 20);
+                    _downloadButton.frame = CGRectMake(CGRectGetMaxX(_trackPicker.frame) + 20, 50, ((controlsView.bounds.size.width - 80) / 4), 40);
                     _downloadButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin;
                     
                     [controlsView addSubview:_trackPicker];
@@ -426,6 +425,15 @@
                         [urlData writeToFile:filePath atomically:YES];
                         [self.tableView reloadData];
                         NSLog(@"File Saved !");
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Download Complete!"
+                                                                        message: @"Saved and updated post."
+                                                                       delegate: self
+                                                              cancelButtonTitle: @"OK"
+                                                              otherButtonTitles: nil];
+                        [alert show];
+                        [alert release];
+
+                        
                     });
                 }
                 
