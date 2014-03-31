@@ -389,6 +389,14 @@
     uploadObject[@"audioFile"] = audioFile;
     
     [uploadObject saveInBackground];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Uploading..."
+                                                    message: @"Continue playing while it uploads."
+                                                   delegate: self
+                                          cancelButtonTitle: @"OK"
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
 }
 
 - (void) download : (id) sender
@@ -409,9 +417,9 @@
             NSString *playFilePath = [audioFile url];
             
             //play audiofile streaming
-            self.avplayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:playFilePath]];
-            self.avplayer.volume = 1.0f;
-            [self.avplayer play];
+//            self.avplayer = [[AVPlayer alloc] initWithURL:[NSURL URLWithString:playFilePath]];
+//            self.avplayer.volume = 1.0f;
+//            [self.avplayer play];
             
             //download the file in a seperate thread.
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
